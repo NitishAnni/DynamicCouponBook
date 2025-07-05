@@ -363,6 +363,14 @@
             cursor: pointer;
             text-decoration: underline;
         }
+        /* Style for the temporary upload button */
+        .auth-container .upload-btn {
+            background-color: #4CAF50; /* Green */
+            margin-top: 20px;
+        }
+        .auth-container .upload-btn:hover {
+            background-color: #45a049;
+        }
 
 
         @media (max-width: 768px) {
@@ -403,6 +411,7 @@
         <input type="password" id="auth-password" placeholder="Password" required class="mb-4">
         <button id="auth-submit-btn">Login</button>
         <p class="toggle-auth-mode" id="toggle-auth-mode-btn">Don't have an account? Sign Up</p>
+        <button id="upload-initial-coupons-btn" class="upload-btn">Upload Initial Coupons to Firestore</button>
     </div>
 
     <div class="coupon-container hidden" id="main-coupon-app">
@@ -454,7 +463,7 @@
         <div class="mt-12 p-6 bg-red-50 rounded-xl border border-red-200 text-sm text-gray-700 text-left mx-auto max-w-xl">
             <h3 class="text-xl font-bold text-red-700 mb-4 text-center">Terms and Conditions</h3>
             <ul class="list-disc list-inside space-y-2">
-                <li>These coupons are exclusive to **Shubhangi Maurya**.</li>
+                <li>These coupons are exclusive to **Subhangi Maurya**.</li>
                 <li>"Wild Card" redemptions are subject to the laws of physics, good taste, and my current budget.</li>
                 <li>Expiration date is firm, but I reserve the right to extend it if you're *extra* sweet. 😉</li>
             </ul>
@@ -469,11 +478,11 @@
 
         // --- Your NEW Firebase Configuration (from your new project) ---
         const firebaseConfig = {
-            apiKey: "AIzaSyDtdyZ8AQzde5ksmfPZLrxM3OgWbwLj4jI", 
+            apiKey: "AIzaSyDtdyZ8AQzde5ksmfPZLrxM3OgWbwLj4jI",
             authDomain: "dynamiccouponbook.firebaseapp.com",
             projectId: "dynamiccouponbook",
-            storageBucket: "dynamiccouponbook.firebasestorage.app", // Replace with your actual NEW Storage Bucket
-            messagingSenderId: "975604349629", 
+            storageBucket: "dynamiccouponbook.firebasestorage.app",
+            messagingSenderId: "975604349629",
             appId: "1:975604349629:web:aed0317edda3e74e7f15d4"
         };
 
@@ -500,6 +509,7 @@
         const authSubmitBtn = document.getElementById('auth-submit-btn');
         const toggleAuthModeBtn = document.getElementById('toggle-auth-mode-btn');
         const mainCouponApp = document.getElementById('main-coupon-app');
+        const uploadInitialCouponsBtn = document.getElementById('upload-initial-coupons-btn'); // New button
 
         const categorySelectionView = document.getElementById('category-selection-view');
         const surpriseDateView = document.getElementById('surprise-date-view');
@@ -538,17 +548,88 @@
         // Ensure __app_id is defined for Firestore path for Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
+        // --- Initial Coupon Data (for one-time upload) ---
+        const initialCouponsData = [
+            // Surprise Date/Day
+            { title: "Surprise Date/Day", description: "Your next adventure is on me, fully planned!", code: "DATE-MAGIC-001", category: "surprise-date", order: 1 },
+            { title: "Surprise Date/Day", description: "Ready for a mystery day filled with fun?", code: "ADVENTURE-AWAITS-002", category: "surprise-date", order: 2 },
+            { title: "Surprise Date/Day", description: "Relax, I've got all the plans covered.", code: "MY-TREAT-003", category: "surprise-date", order: 3 },
+            { title: "Surprise Date/Day", description: "Discover something wonderful, together, on my dime.", code: "EXPLORE-WITH-ME-004", category: "surprise-date", order: 4 },
+            { title: "Surprise Date/Day", description: "Your break from decision-making begins now!", code: "NO-PLANNING-005", category: "surprise-date", order: 5 },
+            { title: "Surprise Date/Day", description: "A custom-made day of joy, just for you.", code: "BIRTHDAY-BLISS-006", category: "surprise-date", order: 6 },
+            { title: "Surprise Date/Day", description: "Time for a romantic escapade, entirely my treat.", code: "ROMANCE-REDEEM-007", category: "surprise-date", order: 7 },
+            { title: "Surprise Date/Day", description: "Guaranteed to put a huge smile on your face!", code: "SMILE-MAKER-009", category: "surprise-date", order: 8 },
+
+            // My Undivided Attention
+            { title: "Undivided Attention", description: "Your thoughts, my ears, for 60 uninterrupted minutes.", code: "FOCUS-ON-YOU-011", category: "attention", order: 1 },
+            { title: "Undivided Attention", description: "Devices off, hearts open, for one full hour.", code: "NO-PHONE-ZONE-012", category: "attention", order: 2 },
+            { title: "Undivided Attention", description: "I'm all ears, for everything you wish to say.", code: "LISTEN-UP-013", category: "attention", order: 3 },
+            { title: "Undivided Attention", description: "This hour is exclusively for you and your needs.", code: "YOUR-HOUR-014", category: "attention", order: 4 },
+            { title: "Undivided Attention", description: "Let's dive deep, just us, without interruptions.", code: "DEEP-TALK-015", category: "attention", order: 5 },
+            { title: "Undivided Attention", description: "My gaze, my focus, entirely on you.", code: "EYES-ON-YOU-016", category: "attention", order: 6 },
+            { title: "Undivided Attention", description: "Pure, unadulterated quality time, just for us.", code: "QUALITY-TIME-017", category: "attention", order: 7 },
+            { title: "Undivided Attention", description: "An hour dedicated solely to our connection.", code: "JUST-US-020", category: "attention", order: 8 },
+
+            // The Wild Card
+            { title: "Wild Card", description: "Your wish is my command... within reason!", code: "WILD-CARD-031", category: "wild-card", order: 1 },
+            { title: "Wild Card", description: "Dream big, write it down, and let's make it happen.", code: "YOUR-WISH-032", category: "wild-card", order: 2 },
+            { title: "Wild Card", description: "Ready to fulfill your heart's desire.", code: "MY-COMMAND-033", category: "wild-card", order: 3 },
+            { title: "Wild Card", description: "Blank canvas, endless possibilities for you.", code: "FILL-ME-IN-034", category: "wild-card", order: 4 },
+            { title: "Wild Card", description: "Design your perfect request, just for me.", code: "CREATE-YOUR-OWN-035", category: "wild-card", order: 5 },
+            { title: "Wild Card", description: "This one's truly up to you!", code: "FLEX-REQUEST-036", category: "wild-card", order: 6 },
+            { title: "Wild Card", description: "Whatever brings you joy, write it here.", code: "UNLIMITED-JOY-037", category: "wild-card", order: 7 },
+            { title: "Wild Card", description: "The power to choose is in your hands!", code: "MYSTERY-PERK-038", category: "wild-card", order: 8 },
+            { title: "Wild Card", description: "From your imagination to reality.", code: "CUSTOM-CODE-040", category: "wild-card", order: 9 }
+        ];
+
+        // Function to upload initial coupons to Firestore
+        uploadInitialCouponsBtn.addEventListener('click', async () => {
+            if (!userId) {
+                showCustomMessageBox('Error', 'Please log in first to upload coupons.');
+                return;
+            }
+
+            if (confirm("Are you sure you want to upload the initial coupon data to Firestore? This will overwrite existing coupons with the same ID.")) {
+                try {
+                    const couponsCollectionRef = collection(db, `artifacts/${appId}/dynamicCoupons`);
+                    for (const coupon of initialCouponsData) {
+                        // Use setDoc with the coupon.code as the document ID
+                        await setDoc(doc(couponsCollectionRef, coupon.code), coupon);
+                    }
+                    showCustomMessageBox('Success', 'All initial coupons uploaded to Firestore successfully!');
+                    // After upload, refresh coupons
+                    await fetchCouponsFromFirestore();
+                } catch (e) {
+                    console.error("Error uploading initial coupons: ", e);
+                    showCustomMessageBox('Error', 'Failed to upload initial coupons. Check console for details.');
+                }
+            }
+        });
+
         // --- Core Coupon Data Management ---
         // Function to fetch all coupons from Firestore
         async function fetchCouponsFromFirestore() {
             try {
                 const couponsCollectionRef = collection(db, `artifacts/${appId}/dynamicCoupons`);
-                const q = query(couponsCollectionRef); // No 'where' clause needed to fetch all
+                // Order by 'order' field to maintain consistent display order
+                const q = query(couponsCollectionRef); // Removed orderBy as it can cause index issues. Sorting will be done in JS.
                 const querySnapshot = await getDocs(q);
                 allCoupons = querySnapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
+                // Sort coupons by category and then by order
+                allCoupons.sort((a, b) => {
+                    const categoryOrder = { 'surprise-date': 1, 'attention': 2, 'wild-card': 3 };
+                    const catA = categoryOrder[a.category] || 99;
+                    const catB = categoryOrder[b.category] || 99;
+
+                    if (catA !== catB) {
+                        return catA - catB;
+                    }
+                    return (a.order || 0) - (b.order || 0);
+                });
+
                 console.log("Coupons fetched from Firestore:", allCoupons);
                 renderAllCoupons(); // Render all coupons into their respective categories
                 await loadCouponStates(); // Load user-specific redeemed states
@@ -572,67 +653,81 @@
                 'wild-card-view': 0
             };
 
-            allCoupons.forEach(coupon => {
-                const couponCard = document.createElement('div');
-                couponCard.id = coupon.id; // Use Firestore document ID as HTML element ID
-                couponCard.classList.add(
-                    'coupon-card'
-                );
+            // Group coupons by category for rendering
+            const categorizedCoupons = {
+                'surprise-date': [],
+                'attention': [],
+                'wild-card': []
+            };
 
-                // Determine the grid to append to based on coupon.category
+            allCoupons.forEach(coupon => {
+                if (categorizedCoupons[coupon.category]) {
+                    categorizedCoupons[coupon.category].push(coupon);
+                } else {
+                    console.warn(`Coupon ${coupon.id} has an unrecognized category: ${coupon.category}`);
+                }
+            });
+
+            // Render coupons for each category
+            for (const categoryKey in categorizedCoupons) {
+                const couponsInCategory = categorizedCoupons[categoryKey];
                 let targetGridId;
                 let categoryTitleColor;
-                let descriptionText;
+                let defaultDescription;
 
-                switch (coupon.category) {
+                switch (categoryKey) {
                     case 'surprise-date':
                         targetGridId = 'surprise-date-grid';
                         categoryTitleColor = 'text-pink-700';
-                        descriptionText = coupon.description || 'Your next adventure is on me, fully planned!';
-                        categoryCounts['surprise-date-view']++;
+                        defaultDescription = 'Your next adventure is on me, fully planned!';
                         break;
                     case 'attention':
                         targetGridId = 'attention-grid';
                         categoryTitleColor = 'text-red-600';
-                        descriptionText = coupon.description || 'Your thoughts, my ears, for 60 uninterrupted minutes.';
-                        categoryCounts['attention-view']++;
+                        defaultDescription = 'Your thoughts, my ears, for 60 uninterrupted minutes.';
                         break;
                     case 'wild-card':
                         targetGridId = 'wild-card-grid';
                         categoryTitleColor = 'text-red-800';
-                        descriptionText = coupon.description || 'Your wish is my command... within reason!';
-                        categoryCounts['wild-card-view']++;
+                        defaultDescription = 'Your wish is my command... within reason!';
                         break;
                     default:
-                        console.warn(`Unknown category: ${coupon.category} for coupon ${coupon.id}`);
-                        return; // Skip if category is not recognized
+                        continue; // Skip unrecognized categories
                 }
 
-                couponCard.innerHTML = `
-                    <h3 class="text-xl font-semibold ${categoryTitleColor} mb-2">${coupon.title || 'Coupon'}</h3>
-                    <p class="text-sm text-gray-600 mb-4">${descriptionText}</p>
-                    <div class="coupon-code-label">Code: ${coupon.code || 'N/A'}</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="${coupon.code}" data-description="${coupon.title || 'Coupon'}">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="${coupon.code}" data-description="${coupon.title || 'Coupon'}">Email</button>
-                    </div>
-                `;
-                document.getElementById(targetGridId).appendChild(couponCard);
-            });
+                couponsInCategory.forEach(coupon => {
+                    const couponCard = document.createElement('div');
+                    couponCard.id = coupon.id; // Use Firestore document ID as HTML element ID
+                    couponCard.classList.add('coupon-card');
+
+                    couponCard.innerHTML = `
+                        <h3 class="text-xl font-semibold ${categoryTitleColor} mb-2">${coupon.title || 'Coupon'}</h3>
+                        <p class="text-sm text-gray-600 mb-4">${coupon.description || defaultDescription}</p>
+                        <div class="coupon-code-label">Code: ${coupon.code || 'N/A'}</div>
+                        <div class="action-buttons">
+                            <button class="redeem-whatsapp-btn" data-code="${coupon.code}" data-description="${coupon.title || 'Coupon'}">WhatsApp</button>
+                            <button class="redeem-email-btn" data-code="${coupon.code}" data-description="${coupon.title || 'Coupon'}">Email</button>
+                        </div>
+                    `;
+                    document.getElementById(targetGridId).appendChild(couponCard);
+                    categoryCounts[`${categoryKey}-view`] = couponsInCategory.length; // Update count
+                });
+            }
 
             // Dynamically create category buttons based on counts
             const categories = [
-                { id: 'surprise-date-view', title: 'Surprise Date/Day', count: categoryCounts['surprise-date-view'], color: 'pink-700' },
-                { id: 'attention-view', title: 'My Undivided Attention', count: categoryCounts['attention-view'], color: 'red-600' },
-                { id: 'wild-card-view', title: 'The Wild Card', count: categoryCounts['wild-card-view'], color: 'red-800' }
+                { id: 'surprise-date-view', title: 'Surprise Date/Day', countKey: 'surprise-date-view', color: 'pink-700' },
+                { id: 'attention-view', title: 'My Undivided Attention', countKey: 'attention-view', color: 'red-600' },
+                { id: 'wild-card-view', title: 'The Wild Card', countKey: 'wild-card-view', color: 'red-800' }
             ];
 
             categories.forEach(cat => {
-                if (cat.count > 0) { // Only show button if there are coupons in this category
+                const count = categoryCounts[cat.countKey];
+                if (count > 0) { // Only show button if there are coupons in this category
                     const button = document.createElement('button');
                     button.classList.add('category-button');
                     button.dataset.target = cat.id;
-                    button.innerHTML = `${cat.title} (${cat.count} Coupons)`;
+                    button.innerHTML = `${cat.title} (${count} Coupons)`;
                     categoryGrid.appendChild(button);
 
                     // Re-attach event listener for newly created category buttons
@@ -873,7 +968,6 @@
 
             viewToShow.classList.add('active');
             window.scrollTo(0, 0);
-            // After showing a view, reload coupon states to ensure correct display
             if (userId) {
                 loadCouponStates();
             }
