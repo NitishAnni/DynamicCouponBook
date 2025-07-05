@@ -417,267 +417,36 @@
             </div>
 
             <div class="category-grid">
-                <button class="category-button" data-target="surprise-date-view">
-                    Surprise Date/Day (8 Coupons)
-                </button>
-                <button class="category-button" data-target="attention-view">
-                    My Undivided Attention (8 Coupons)
-                </button>
-                <button class="category-button" data-target="wild-card-view">
-                    The Wild Card (9 Coupons)
-                </button>
+                <!-- Category buttons will be dynamically updated based on fetched coupons -->
             </div>
         </div>
 
-        <!-- Surprise Date/Day Coupons View -->
+        <!-- Dynamic Coupon Views (Content will be injected here) -->
+        <!-- These divs will be populated and shown/hidden by JavaScript -->
         <div id="surprise-date-view" class="view-section">
             <button class="back-button mb-6">← Back to Categories</button>
             <h2 class="category-title text-pink-700">Surprise Date/Day Collection</h2>
             <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">This coupon entitles you to one specially planned surprise date or day out, planned entirely by me! Just pick a good time, and I'll handle all the details for an unforgettable experience.</p>
-            <div class="coupon-grid">
-                <div class="coupon-card" id="DATE-MAGIC-001">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Your next adventure is on me, fully planned!</p>
-                    <div class="coupon-code-label">Code: DATE-MAGIC-001</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="DATE-MAGIC-001" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="DATE-MAGIC-001" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="ADVENTURE-AWAITS-002">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Ready for a mystery day filled with fun?</p>
-                    <div class="coupon-code-label">Code: ADVENTURE-AWAITS-002</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="ADVENTURE-AWAITS-002" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="ADVENTURE-AWAITS-002" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="MY-TREAT-003">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Relax, I've got all the plans covered.</p>
-                    <div class="coupon-code-label">Code: MY-TREAT-003</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="MY-TREAT-003" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="MY-TREAT-003" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="EXPLORE-WITH-ME-004">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Discover something wonderful, together, on my dime.</p>
-                    <div class="coupon-code-label">Code: EXPLORE-WITH-ME-004</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="EXPLORE-WITH-ME-004" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="EXPLORE-WITH-ME-004" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="NO-PLANNING-005">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Your break from decision-making begins now!</p>
-                    <div class="coupon-code-label">Code: NO-PLANNING-005</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="NO-PLANNING-005" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="NO-PLANNING-005" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="BIRTHDAY-BLISS-006">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">A custom-made day of joy, just for you.</p>
-                    <div class="coupon-code-label">Code: BIRTHDAY-BLISS-006</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="BIRTHDAY-BLISS-006" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="BIRTHDAY-BLISS-006" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="ROMANCE-REDEEM-007">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Time for a romantic escapade, entirely my treat.</p>
-                    <div class="coupon-code-label">Code: ROMANCE-REDEEM-007</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="ROMANCE-REDEEM-007" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="ROMANCE-REDEEM-007" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="SMILE-MAKER-009">
-                    <h3 class="text-xl font-semibold text-pink-700 mb-2">Surprise Date/Day</h3>
-                    <p class="text-sm text-gray-600 mb-4">Guaranteed to put a huge smile on your face!</p>
-                    <div class="coupon-code-label">Code: SMILE-MAKER-009</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="SMILE-MAKER-009" data-description="Surprise Date/Day">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="SMILE-MAKER-009" data-description="Surprise Date/Day">Email</button>
-                    </div>
-                </div>
+            <div class="coupon-grid" id="surprise-date-grid">
+                <!-- Coupons for Surprise Date/Day will be dynamically loaded here -->
             </div>
         </div>
 
-        <!-- My Undivided Attention Coupons View -->
         <div id="attention-view" class="view-section">
             <button class="back-button mb-6">← Back to Categories</button>
             <h2 class="category-title text-red-600">My Undivided Attention Collection</h2>
             <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">Redeem this for one full hour of my absolutely undivided attention. No phones, no distractions, just us. Talk about your day, your dreams, or simply enjoy quiet companionship.</p>
-            <div class="coupon-grid">
-                <div class="coupon-card" id="FOCUS-ON-YOU-011">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">Your thoughts, my ears, for 60 uninterrupted minutes.</p>
-                    <div class="coupon-code-label">Code: FOCUS-ON-YOU-011</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="FOCUS-ON-YOU-011" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="FOCUS-ON-YOU-011" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="NO-PHONE-ZONE-012">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">Devices off, hearts open, for one full hour.</p>
-                    <div class="coupon-code-label">Code: NO-PHONE-ZONE-012</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="NO-PHONE-ZONE-012" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="NO-PHONE-ZONE-012" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="LISTEN-UP-013">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">I'm all ears, for everything you wish to say.</p>
-                    <div class="coupon-code-label">Code: LISTEN-UP-013</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="LISTEN-UP-013" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="LISTEN-UP-013" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="YOUR-HOUR-014">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">This hour is exclusively for you and your needs.</p>
-                    <div class="coupon-code-label">Code: YOUR-HOUR-014</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="YOUR-HOUR-014" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="YOUR-HOUR-014" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="DEEP-TALK-015">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">Let's dive deep, just us, without interruptions.</p>
-                    <div class="coupon-code-label">Code: DEEP-TALK-015</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="DEEP-TALK-015" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="DEEP-TALK-015" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="EYES-ON-YOU-016">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">My gaze, my focus, entirely on you.</p>
-                    <div class="coupon-code-label">Code: EYES-ON-YOU-016</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="EYES-ON-YOU-016" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="EYES-ON-YOU-016" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="QUALITY-TIME-017">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">Pure, unadulterated quality time, just for us.</p>
-                    <div class="coupon-code-label">Code: QUALITY-TIME-017</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="QUALITY-TIME-017" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="QUALITY-TIME-017" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="JUST-US-020">
-                    <h3 class="text-xl font-semibold text-red-600 mb-2">Undivided Attention</h3>
-                    <p class="text-sm text-gray-600 mb-4">An hour dedicated solely to our connection.</p>
-                    <div class="coupon-code-label">Code: JUST-US-020</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="JUST-US-020" data-description="Undivided Attention">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="JUST-US-020" data-description="Undivided Attention">Email</button>
-                    </div>
-                </div>
+            <div class="coupon-grid" id="attention-grid">
+                <!-- Coupons for My Undivided Attention will be dynamically loaded here -->
             </div>
         </div>
 
-        <!-- The Wild Card Coupons View -->
         <div id="wild-card-view" class="view-section">
             <button class="back-button mb-6">← Back to Categories</button>
             <h2 class="category-title text-red-800">The Wild Card Collection</h2>
             <p class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">This is your 'Wild Card' coupon! Fill in any reasonable request, big or small, and I'll do my best to make it happen. Be creative and surprise me!</p>
-            <div class="coupon-grid">
-                <div class="coupon-card" id="WILD-CARD-031">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">Your wish is my command... within reason!</p>
-                    <div class="coupon-code-label">Code: WILD-CARD-031</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="WILD-CARD-031" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="WILD-CARD-031" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="YOUR-WISH-032">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">Dream big, write it down, and let's make it happen.</p>
-                    <div class="coupon-code-label">Code: YOUR-WISH-032</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="YOUR-WISH-032" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="YOUR-WISH-032" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="MY-COMMAND-033">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">Ready to fulfill your heart's desire.</p>
-                    <div class="coupon-code-label">Code: MY-COMMAND-033</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="MY-COMMAND-033" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="MY-COMMAND-033" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="FILL-ME-IN-034">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">Blank canvas, endless possibilities for you.</p>
-                    <div class="coupon-code-label">Code: FILL-ME-IN-034</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="FILL-ME-IN-034" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="FILL-ME-IN-034" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="CREATE-YOUR-OWN-035">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">Design your perfect request, just for me.</p>
-                    <div class="coupon-code-label">Code: CREATE-YOUR-OWN-035</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="CREATE-YOUR-OWN-035" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="CREATE-YOUR-OWN-035" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="FLEX-REQUEST-036">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">This one's truly up to you!</p>
-                    <div class="coupon-code-label">Code: FLEX-REQUEST-036</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="FLEX-REQUEST-036" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="FLEX-REQUEST-036" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="UNLIMITED-JOY-037">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">Whatever brings you joy, write it here.</p>
-                    <div class="coupon-code-label">Code: UNLIMITED-JOY-037</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="UNLIMITED-JOY-037" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="UNLIMITED-JOY-037" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="MYSTERY-PERK-038">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">The power to choose is in your hands!</p>
-                    <div class="coupon-code-label">Code: MYSTERY-PERK-038</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="MYSTERY-PERK-038" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="MYSTERY-PERK-038" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
-                <div class="coupon-card" id="CUSTOM-CODE-040">
-                    <h3 class="text-xl font-semibold text-red-800 mb-2">Wild Card</h3>
-                    <p class="text-sm text-gray-600 mb-4">From your imagination to reality.</p>
-                    <div class="coupon-code-label">Code: CUSTOM-CODE-040</div>
-                    <div class="action-buttons">
-                        <button class="redeem-whatsapp-btn" data-code="CUSTOM-CODE-040" data-description="Wild Card">WhatsApp</button>
-                        <button class="redeem-email-btn" data-code="CUSTOM-CODE-040" data-description="Wild Card">Email</button>
-                    </div>
-                </div>
+            <div class="coupon-grid" id="wild-card-grid">
+                <!-- Coupons for The Wild Card will be dynamically loaded here -->
             </div>
         </div>
         
@@ -685,7 +454,7 @@
         <div class="mt-12 p-6 bg-red-50 rounded-xl border border-red-200 text-sm text-gray-700 text-left mx-auto max-w-xl">
             <h3 class="text-xl font-bold text-red-700 mb-4 text-center">Terms and Conditions</h3>
             <ul class="list-disc list-inside space-y-2">
-                <li>These coupons are exclusive to **Subhangi Maurya**.</li>
+                <li>These coupons are exclusive to **Shubhangi Maurya**.</li>
                 <li>"Wild Card" redemptions are subject to the laws of physics, good taste, and my current budget.</li>
                 <li>Expiration date is firm, but I reserve the right to extend it if you're *extra* sweet. 😉</li>
             </ul>
@@ -696,16 +465,16 @@
         // --- Firebase SDK Imports ---
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, setDoc, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
 
-        // --- Your Firebase Configuration ---
+        // --- Your NEW Firebase Configuration (from your new project) ---
         const firebaseConfig = {
-            apiKey: "AIzaSyATePyvf2FNYf6njDhhfoPTHaEsb9hFNao",
-            authDomain: "coupon-book-c7b0c.firebaseapp.com",
-            projectId: "coupon-book-c7b0c",
-            storageBucket: "coupon-book-c7b0c.firebasestorage.app",
-            messagingSenderId: "1042377030325",
-            appId: "1:1042377030325:web:eb65187ab9050b5c529cfc"
+            apiKey: "AIzaSyDtdyZ8AQzde5ksmfPZLrxM3OgWbwLj4jI", 
+            authDomain: "dynamiccouponbook.firebaseapp.com",
+            projectId: "dynamiccouponbook",
+            storageBucket: "dynamiccouponbook.firebasestorage.app", // Replace with your actual NEW Storage Bucket
+            messagingSenderId: "975604349629", 
+            appId: "1:975604349629:web:aed0317edda3e74e7f15d4"
         };
 
         // Initialize Firebase
@@ -714,6 +483,7 @@
         const auth = getAuth(app);
 
         let userId = null; // To store the authenticated user's ID
+        let allCoupons = []; // To store all fetched coupons
 
         // --- IMPORTANT: REPLACE THESE PLACEHOLDER VALUES FOR WHATSAPP/EMAIL ---
         // Your WhatsApp number with country code (e.g., '+919876543210')
@@ -736,10 +506,7 @@
         const attentionView = document.getElementById('attention-view');
         const wildCardView = document.getElementById('wild-card-view');
 
-        const categoryButtons = document.querySelectorAll('.category-button');
-        const backButtons = document.querySelectorAll('.back-button');
-        const redeemWhatsappButtons = document.querySelectorAll('.redeem-whatsapp-btn');
-        const redeemEmailButtons = document.querySelectorAll('.redeem-email-btn');
+        const categoryGrid = document.querySelector('.category-grid'); // Select the grid for category buttons
 
         // Custom Message Box elements (dynamically created for reusability)
         const customMessageBox = document.createElement('div');
@@ -771,6 +538,174 @@
         // Ensure __app_id is defined for Firestore path for Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
+        // --- Core Coupon Data Management ---
+        // Function to fetch all coupons from Firestore
+        async function fetchCouponsFromFirestore() {
+            try {
+                const couponsCollectionRef = collection(db, `artifacts/${appId}/dynamicCoupons`);
+                const q = query(couponsCollectionRef); // No 'where' clause needed to fetch all
+                const querySnapshot = await getDocs(q);
+                allCoupons = querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                console.log("Coupons fetched from Firestore:", allCoupons);
+                renderAllCoupons(); // Render all coupons into their respective categories
+                await loadCouponStates(); // Load user-specific redeemed states
+            } catch (e) {
+                console.error("Error fetching coupons from Firestore: ", e);
+                showCustomMessageBox('Error', 'Failed to load coupons. Please check your Firebase setup and network connection.');
+            }
+        }
+
+        // Function to render coupons into their respective category grids
+        function renderAllCoupons() {
+            // Clear existing coupons in grids
+            document.getElementById('surprise-date-grid').innerHTML = '';
+            document.getElementById('attention-grid').innerHTML = '';
+            document.getElementById('wild-card-grid').innerHTML = '';
+            categoryGrid.innerHTML = ''; // Clear existing category buttons
+
+            const categoryCounts = {
+                'surprise-date-view': 0,
+                'attention-view': 0,
+                'wild-card-view': 0
+            };
+
+            allCoupons.forEach(coupon => {
+                const couponCard = document.createElement('div');
+                couponCard.id = coupon.id; // Use Firestore document ID as HTML element ID
+                couponCard.classList.add(
+                    'coupon-card'
+                );
+
+                // Determine the grid to append to based on coupon.category
+                let targetGridId;
+                let categoryTitleColor;
+                let descriptionText;
+
+                switch (coupon.category) {
+                    case 'surprise-date':
+                        targetGridId = 'surprise-date-grid';
+                        categoryTitleColor = 'text-pink-700';
+                        descriptionText = coupon.description || 'Your next adventure is on me, fully planned!';
+                        categoryCounts['surprise-date-view']++;
+                        break;
+                    case 'attention':
+                        targetGridId = 'attention-grid';
+                        categoryTitleColor = 'text-red-600';
+                        descriptionText = coupon.description || 'Your thoughts, my ears, for 60 uninterrupted minutes.';
+                        categoryCounts['attention-view']++;
+                        break;
+                    case 'wild-card':
+                        targetGridId = 'wild-card-grid';
+                        categoryTitleColor = 'text-red-800';
+                        descriptionText = coupon.description || 'Your wish is my command... within reason!';
+                        categoryCounts['wild-card-view']++;
+                        break;
+                    default:
+                        console.warn(`Unknown category: ${coupon.category} for coupon ${coupon.id}`);
+                        return; // Skip if category is not recognized
+                }
+
+                couponCard.innerHTML = `
+                    <h3 class="text-xl font-semibold ${categoryTitleColor} mb-2">${coupon.title || 'Coupon'}</h3>
+                    <p class="text-sm text-gray-600 mb-4">${descriptionText}</p>
+                    <div class="coupon-code-label">Code: ${coupon.code || 'N/A'}</div>
+                    <div class="action-buttons">
+                        <button class="redeem-whatsapp-btn" data-code="${coupon.code}" data-description="${coupon.title || 'Coupon'}">WhatsApp</button>
+                        <button class="redeem-email-btn" data-code="${coupon.code}" data-description="${coupon.title || 'Coupon'}">Email</button>
+                    </div>
+                `;
+                document.getElementById(targetGridId).appendChild(couponCard);
+            });
+
+            // Dynamically create category buttons based on counts
+            const categories = [
+                { id: 'surprise-date-view', title: 'Surprise Date/Day', count: categoryCounts['surprise-date-view'], color: 'pink-700' },
+                { id: 'attention-view', title: 'My Undivided Attention', count: categoryCounts['attention-view'], color: 'red-600' },
+                { id: 'wild-card-view', title: 'The Wild Card', count: categoryCounts['wild-card-view'], color: 'red-800' }
+            ];
+
+            categories.forEach(cat => {
+                if (cat.count > 0) { // Only show button if there are coupons in this category
+                    const button = document.createElement('button');
+                    button.classList.add('category-button');
+                    button.dataset.target = cat.id;
+                    button.innerHTML = `${cat.title} (${cat.count} Coupons)`;
+                    categoryGrid.appendChild(button);
+
+                    // Re-attach event listener for newly created category buttons
+                    button.addEventListener('click', () => {
+                        const targetView = document.getElementById(cat.id);
+                        showView(targetView);
+                    });
+                }
+            });
+
+            // Re-attach event listeners for redeem buttons after they are rendered
+            attachRedeemButtonListeners();
+        }
+
+        // Function to attach event listeners to redeem buttons (called after rendering)
+        function attachRedeemButtonListeners() {
+            const redeemWhatsappButtons = document.querySelectorAll('.redeem-whatsapp-btn');
+            const redeemEmailButtons = document.querySelectorAll('.redeem-email-btn');
+
+            redeemWhatsappButtons.forEach(button => {
+                // Remove existing listener to prevent duplicates if renderAllCoupons is called multiple times
+                button.removeEventListener('click', handleRedeemWhatsappClick);
+                button.addEventListener('click', handleRedeemWhatsappClick);
+            });
+
+            redeemEmailButtons.forEach(button => {
+                // Remove existing listener to prevent duplicates
+                button.removeEventListener('click', handleRedeemEmailClick);
+                button.addEventListener('click', handleRedeemEmailClick);
+            });
+        }
+
+        // Handlers for redeem buttons
+        function handleRedeemWhatsappClick(event) {
+            const button = event.target;
+            if (button.disabled) return;
+
+            if (YOUR_WHATSAPP_NUMBER === 'YOUR_WHATSAPP_NUMBER_WITH_COUNTRY_CODE' || !YOUR_WHATSAPP_NUMBER) {
+                showCustomMessageBox('Warning!', 'Please update YOUR_WHATSAPP_NUMBER in the code with your actual number to use this feature.');
+                return;
+            }
+            const couponCard = button.closest('.coupon-card');
+            const code = button.dataset.code;
+            const description = button.dataset.description;
+
+            markCouponAsRedeemed(couponCard);
+
+            const message = `Hi! I'd like to redeem my "${description}" coupon: ${code}.`;
+            window.open(`https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+            showCustomMessageBox('Coupon Redeemed!', `You've redeemed the "${description}" coupon!`);
+        }
+
+        function handleRedeemEmailClick(event) {
+            const button = event.target;
+            if (button.disabled) return;
+
+            if (YOUR_EMAIL_ADDRESS === 'YOUR_EMAIL_ADDRESS' || !YOUR_EMAIL_ADDRESS) {
+                showCustomMessageBox('Warning!', 'Please update YOUR_EMAIL_ADDRESS in the code with your actual email to use this feature.');
+                return;
+            }
+            const couponCard = button.closest('.coupon-card');
+            const code = button.dataset.code;
+            const description = button.dataset.description;
+
+            markCouponAsRedeemed(couponCard);
+
+            const subject = `Coupon Redemption: ${description}`;
+            const body = `Hi! I'd like to redeem my "${description}" coupon with code: ${code}.\n\nLet me know when we can make this happen!`;
+            window.location.href = `mailto:${YOUR_EMAIL_ADDRESS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            showCustomMessageBox('Coupon Redeemed!', `You've redeemed the "${description}" coupon!`);
+        }
+
+
         // Function to load coupon states from Firestore
         async function loadCouponStates() {
             if (!userId) {
@@ -783,13 +718,11 @@
 
                 if (docSnap.exists()) {
                     const savedStates = docSnap.data();
-                    // Iterate through all coupon cards in the DOM
                     document.querySelectorAll('.coupon-card').forEach(couponElement => {
-                        const couponId = couponElement.id; // Get the ID from the HTML element
+                        const couponId = couponElement.id;
                         if (savedStates[couponId] && savedStates[couponId].redeemed) {
-                            markCouponAsRedeemed(couponElement, false); // Mark as redeemed without saving again
+                            markCouponAsRedeemed(couponElement, false);
                         } else {
-                            // Ensure it's not marked if it wasn't saved as redeemed
                             couponElement.classList.remove('redeemed');
                             const whatsappButton = couponElement.querySelector('.redeem-whatsapp-btn');
                             const emailButton = couponElement.querySelector('.redeem-email-btn');
@@ -822,7 +755,6 @@
             }
             try {
                 const couponDocRef = doc(db, `artifacts/${appId}/users/${userId}/couponStates`, 'states');
-                // Use setDoc with merge: true to update only the specific coupon state
                 await setDoc(couponDocRef, {
                     [couponId]: { redeemed: isRedeemed }
                 }, { merge: true });
@@ -835,19 +767,19 @@
 
         // Function to mark a coupon as redeemed visually and in Firestore
         function markCouponAsRedeemed(couponElement, saveToFirestore = true) {
-            couponElement.classList.add('redeemed'); // Add the 'redeemed' class for styling
+            couponElement.classList.add('redeemed');
             const whatsappButton = couponElement.querySelector('.redeem-whatsapp-btn');
             const emailButton = couponElement.querySelector('.redeem-email-btn');
 
             if (whatsappButton) {
                 whatsappButton.innerText = 'Redeemed!';
                 whatsappButton.classList.add('redeemed-btn');
-                whatsappButton.disabled = true; // Disable the button
+                whatsappButton.disabled = true;
             }
             if (emailButton) {
                 emailButton.innerText = 'Redeemed!';
                 emailButton.classList.add('redeemed-btn');
-                emailButton.disabled = true; // Disable the button
+                emailButton.disabled = true;
             }
 
             if (saveToFirestore) {
@@ -856,7 +788,7 @@
         }
 
         // --- Authentication Logic (Email/Password) ---
-        let isLoginMode = true; // State to track if form is in login or signup mode
+        let isLoginMode = true;
 
         function toggleAuthMode() {
             isLoginMode = !isLoginMode;
@@ -885,10 +817,8 @@
             try {
                 if (isLoginMode) {
                     await signInWithEmailAndPassword(auth, email, password);
-                    // No success message box for login, UI transition is enough
                 } else {
                     await createUserWithEmailAndPassword(auth, email, password);
-                    // No success message box for signup, UI transition is enough
                 }
             } catch (error) {
                 console.error("Authentication error:", error);
@@ -926,97 +856,33 @@
                 console.log("Authenticated with Firebase. User ID:", userId);
                 authView.classList.add('hidden'); // Hide auth form
                 mainCouponApp.classList.remove('hidden'); // Show main app
-                await loadCouponStates(); // Load coupon states for this authenticated user
+                await fetchCouponsFromFirestore(); // Fetch and render coupons after authentication
             } else {
-                userId = null; // Clear userId if not authenticated
-                authView.classList.remove('hidden'); // Show auth form
-                mainCouponApp.classList.add('hidden'); // Hide main app
+                userId = null;
+                authView.classList.remove('hidden');
+                mainCouponApp.classList.add('hidden');
             }
         });
 
-
         // Function to show a specific view and hide others
         function showView(viewToShow) {
-            // Hide all views first
             categorySelectionView.classList.remove('active');
             surpriseDateView.classList.remove('active');
             attentionView.classList.remove('active');
             wildCardView.classList.remove('active');
 
-            // Show the requested view
             viewToShow.classList.add('active');
-            window.scrollTo(0, 0); // Scroll to top when view changes
-            // After showing a view, load coupon states to ensure correct display
-            // This is important if user logs in and then navigates
-            if (userId) { // Only load if a user is authenticated
+            window.scrollTo(0, 0);
+            // After showing a view, reload coupon states to ensure correct display
+            if (userId) {
                 loadCouponStates();
             }
         }
 
-        // Event listeners for category buttons
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetViewId = button.dataset.target;
-                const targetView = document.getElementById(targetViewId);
-                showView(targetView);
-            });
-        });
-
-        // Event listeners for back buttons
-        backButtons.forEach(button => {
+        // Event listeners for back buttons (these are static)
+        document.querySelectorAll('.back-button').forEach(button => {
             button.addEventListener('click', () => {
                 showView(categorySelectionView);
-            });
-        });
-
-        // WhatsApp button click handler
-        redeemWhatsappButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Check if the button is already disabled (coupon redeemed)
-                if (button.disabled) {
-                    return; // Do nothing if already redeemed
-                }
-
-                if (YOUR_WHATSAPP_NUMBER === 'YOUR_WHATSAPP_NUMBER_WITH_COUNTRY_CODE' || !YOUR_WHATSAPP_NUMBER) {
-                    showCustomMessageBox('Warning!', 'Please update YOUR_WHATSAPP_NUMBER in the code with your actual number to use this feature.');
-                    return;
-                }
-                const couponCard = button.closest('.coupon-card');
-                const code = button.dataset.code;
-                const description = button.dataset.description;
-
-                // Mark coupon as redeemed visually and in Firestore
-                markCouponAsRedeemed(couponCard);
-
-                const message = `Hi! I'd like to redeem my "${description}" coupon: ${code}.`;
-                window.open(`https://wa.me/${YOUR_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
-                showCustomMessageBox('Coupon Redeemed!', `You've redeemed the "${description}" coupon!`);
-            });
-        });
-
-        // Email button click handler
-        redeemEmailButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Check if the button is already disabled (coupon redeemed)
-                if (button.disabled) {
-                    return; // Do nothing if already redeemed
-                }
-
-                if (YOUR_EMAIL_ADDRESS === 'YOUR_EMAIL_ADDRESS' || !YOUR_EMAIL_ADDRESS) {
-                    showCustomMessageBox('Warning!', 'Please update YOUR_EMAIL_ADDRESS in the code with your actual email to use this feature.');
-                    return;
-                }
-                const couponCard = button.closest('.coupon-card');
-                const code = button.dataset.code;
-                const description = button.dataset.description;
-
-                // Mark coupon as redeemed visually and in Firestore
-                markCouponAsRedeemed(couponCard);
-
-                const subject = `Coupon Redemption: ${description}`;
-                const body = `Hi! I'd like to redeem my "${description}" coupon with code: ${code}.\n\nLet me know when we can make this happen!`;
-                window.location.href = `mailto:${YOUR_EMAIL_ADDRESS}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                showCustomMessageBox('Coupon Redeemed!', `You've redeemed the "${description}" coupon!`);
             });
         });
 
