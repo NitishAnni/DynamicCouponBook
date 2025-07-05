@@ -364,11 +364,20 @@
             text-decoration: underline;
         }
         /* Style for the temporary upload button */
-        .auth-container .upload-btn {
+        .upload-btn { /* Moved out of auth-container specific styling for broader use */
             background-color: #4CAF50; /* Green */
             margin-top: 20px;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.2s ease;
+            width: 100%;
         }
-        .auth-container .upload-btn:hover {
+        .upload-btn:hover {
             background-color: #45a049;
         }
 
@@ -411,10 +420,13 @@
         <input type="password" id="auth-password" placeholder="Password" required class="mb-4">
         <button id="auth-submit-btn">Login</button>
         <p class="toggle-auth-mode" id="toggle-auth-mode-btn">Don't have an account? Sign Up</p>
-        <button id="upload-initial-coupons-btn" class="upload-btn">Upload Initial Coupons to Firestore</button>
     </div>
 
     <div class="coupon-container hidden" id="main-coupon-app">
+        <!-- Temporary Upload Button - Visible only when logged in -->
+        <button id="upload-initial-coupons-btn" class="upload-btn hidden">Upload Initial Coupons to Firestore</button>
+        <hr class="my-6 border-t-2 border-gray-200"> <!-- Separator for the button -->
+
         <!-- Category Selection View (Initial Page) -->
         <div id="category-selection-view" class="view-section active">
             <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">Happy 25th Birthday, My Love!</h1>
@@ -589,7 +601,19 @@
                 return;
             }
 
-            if (confirm("Are you sure you want to upload the initial coupon data to Firestore? This will overwrite existing coupons with the same ID.")) {
+            // Using a custom confirmation box instead of window.confirm
+            const confirmUploadBox = document.createElement('div');
+            confirmUploadBox.classList.add('custom-message-box');
+            confirmUploadBox.innerHTML = `
+                <h3>Confirm Upload</h3>
+                <p>Are you sure you want to upload the initial coupon data to Firestore? This will overwrite existing coupons with the same ID.</p>
+                <button id="confirmUploadYes" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mr-2">Yes, Upload</button>
+                <button id="confirmUploadNo" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">Cancel</button>
+            `;
+            document.body.appendChild(confirmUploadBox);
+
+            document.getElementById('confirmUploadYes').addEventListener('click', async () => {
+                confirmUploadBox.remove(); // Remove the confirmation box
                 try {
                     const couponsCollectionRef = collection(db, `artifacts/${appId}/dynamicCoupons`);
                     for (const coupon of initialCouponsData) {
@@ -603,7 +627,11 @@
                     console.error("Error uploading initial coupons: ", e);
                     showCustomMessageBox('Error', 'Failed to upload initial coupons. Check console for details.');
                 }
-            }
+            });
+
+            document.getElementById('confirmUploadNo').addEventListener('click', () => {
+                confirmUploadBox.remove(); // Remove the confirmation box
+            });
         });
 
         // --- Core Coupon Data Management ---
@@ -612,7 +640,7 @@
             try {
                 const couponsCollectionRef = collection(db, `artifacts/${appId}/dynamicCoupons`);
                 // Order by 'order' field to maintain consistent display order
-                const q = query(couponsCollectionRef); // Removed orderBy as it can cause index issues. Sorting will be done in JS.
+                const q = query(couponsCollectionRef);
                 const querySnapshot = await getDocs(q);
                 allCoupons = querySnapshot.docs.map(doc => ({
                     id: doc.id,
@@ -673,7 +701,7 @@
                 const couponsInCategory = categorizedCoupons[categoryKey];
                 let targetGridId;
                 let categoryTitleColor;
-                let defaultDescription;
+                let defaultDescription; // Fallback description if not provided in Firestore
 
                 switch (categoryKey) {
                     case 'surprise-date':
@@ -951,11 +979,13 @@
                 console.log("Authenticated with Firebase. User ID:", userId);
                 authView.classList.add('hidden'); // Hide auth form
                 mainCouponApp.classList.remove('hidden'); // Show main app
+                uploadInitialCouponsBtn.classList.remove('hidden'); // Show upload button after login
                 await fetchCouponsFromFirestore(); // Fetch and render coupons after authentication
             } else {
                 userId = null;
                 authView.classList.remove('hidden');
                 mainCouponApp.classList.add('hidden');
+                uploadInitialCouponsBtn.classList.add('hidden'); // Hide upload button if not logged in
             }
         });
 
